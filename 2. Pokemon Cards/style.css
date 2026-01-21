@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cards{
+    border:2px black solid;
+    width:120px;
+    height:170px;
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:7px;
+    margin-right:7px;
+    object-fit: cover;
+    ;
+
+}
+
+.main{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    height:100vh;
+    flex-wrap: wrap;
+}

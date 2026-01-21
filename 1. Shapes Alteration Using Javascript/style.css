@@ -1,0 +1,39 @@
+body{
+    margin:0px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height:100vh;
+}
+
+.main{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.shape{
+    border-radius:3px;
+    border:2px black solid ;
+    padding:20px;
+    margin:7px;
+    height:100px;
+    width:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle{
+    border-radius:60%;
+}
+
+#diamond{
+    transform: rotate(45deg);
+    margin-top:50px;
+}
+
+#dia{
+    transform: rotate(-45deg);
+}
+

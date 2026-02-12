@@ -1,0 +1,90 @@
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page layout */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Container */
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 60px;
+    height: 100vh;
+
+    perspective: 800px;
+    background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+    place-items: center;
+}
+
+
+/* Shape base style */
+.shape{
+    width: 180px;
+    height: 120px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #004d40;
+
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    transition:
+        transform 0.6s ease,
+        background-color 0.4s ease,
+        opacity 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.shape:hover{
+    background-color: aqua;
+    opacity: 0.7;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+
+#transformX:hover{
+    transform: translateX(200px);
+}
+
+#transformY:hover{
+    transform: translateY(200px);
+}
+
+#scaleX:hover{
+    transform: scaleX(1.5);
+}
+
+#scaleY:hover{
+    transform: scaleY(1.5);
+}
+
+#rotateX:hover{
+    transform: rotateX(45deg) translateZ(30px);
+}
+
+#rotateY:hover{
+    transform: rotateY(60deg) translateZ(30px);
+}
+
+#skewX:hover{
+    transform: skewX(20deg);
+}
+
+#skewY:hover{
+    transform: skewY(20deg);
+}

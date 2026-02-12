@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.card{
+    border:2px black solid;
+    height:150px;
+    width:120px;
+    border-radius:6px;   
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.main{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}

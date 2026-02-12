@@ -1,0 +1,200 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100vw;
+    background-color: #0d1c21;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-logo{
+    height:50px;
+    width:129.7px;
+    padding-top: 8.9px;
+    padding-left: 4px;
+}
+
+.logo{
+    background-image: url("new logo.png");
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+.border:hover{
+    border:2px solid white;
+    border-radius: 5px;
+}
+
+/* ================= DELIVERY ================= */
+
+.delivery p{
+    margin-top: 10px;
+    color:#CCCCCC;
+    font-size: 16px;
+    font-weight: 200;
+    width:250px;
+}
+
+p.d{
+    margin: 0;
+    color:white;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    display:flex;
+    align-items: center;
+}
+
+.all{
+    background-color: rgb(232, 224, 224);
+    color:#5d6060;
+    padding: 0.8rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 15px;
+    width:50px;
+}
+
+input{
+    padding:0.5rem;
+    font-size: 20px;
+    width: 700px;
+}
+
+.search-logo{
+    background-color: rgb(244, 183, 29);
+    color:#0f1111;
+    width:45px;
+    padding: 0.65rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 19px;
+}
+
+/* ================= OTHER NAV ITEMS ================= */
+
+.hello{
+    padding-top: 12px;
+    line-height: 1;
+}
+
+.return{
+    padding-top: 12px;
+}
+
+/* ================= MENU BAR ================= */
+
+.bar{
+    height:39px;
+    display:flex;
+    font-size: 19px;
+    background-color: #222638;
+    color:white;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* ================= HERO BG ================= */
+
+.bg{
+    background-image: url("amazon_bg.jpg");
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:450px;
+}
+
+/* ================= MAIN HERO ================= */
+
+.boxs1{
+    display:flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    margin-top: 20px;
+}
+
+.class1,
+.class2,
+.class3{
+    border:2px solid black;
+    height:320px;
+    width:430px;
+    background-color: rgb(234, 228, 228);
+}
+
+.class4{
+    border: 2px solid black;
+    height: 520px;
+    width: 430px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+/* ================= IMAGE GRID ================= */
+
+.images{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;        /* 🔥 reduced vertical gap */
+    column-gap: 10px;
+    margin-top: 10px;
+}
+
+/* ================= IMAGE CARDS ================= */
+
+.im1, .im2, .im3, .im4{
+    height: 180px;
+    width: 195px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ================= IMAGE SOURCES ================= */
+
+.im1{
+    background-image: url("box3/1.jpg");
+}
+
+.im2{
+    background-image: url("box3/2.jpg");
+}
+
+.im3{
+    background-image: url("box3/3.jpg");
+}
+
+.im4{
+    background-image: url("box3/4.jpg");
+}
+
+/* ================= HOVER EFFECT ================= */
+
+.im1:hover,
+.im2:hover,
+.im3:hover,
+.im4:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+}

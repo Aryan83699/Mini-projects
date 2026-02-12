@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Percentage Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    .row {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Percentage Calculator</h2>
+
+<!-- Total Marks -->
+<div class="row">
+  <label>Total Marks (out of): </label>
+  <input type="number" id="totalMarks" placeholder="e.g. 500">
+</div>
+
+<hr>
+
+<!-- Subject Container -->
+<div id="subjects"></div>
+
+<button onclick="addSubject()">Add Subject</button>
+<br><br>
+
+<button onclick="calculatePercentage()">Calculate Percentage</button>
+
+<h3 id="result"></h3>
+
+---
+
+<script>
+  function addSubject() {
+    const div = document.createElement("div");
+    div.className = "row";
+
+    div.innerHTML = `
+      <select>
+        <option value="">Select Subject</option>
+        <option>Math</option>
+        <option>Science</option>
+        <option>English</option>
+        <option>Computer</option>
+      </select>
+
+      <input type="number" class="marks" placeholder="Enter marks">
+    `;
+
+    document.getElementById("subjects").appendChild(div);
+  }
+
+  function calculatePercentage() {
+    const totalMarks = Number(document.getElementById("totalMarks").value);
+    const marksInputs = document.getElementsByClassName("marks");
+
+    let obtainedMarks = 0;
+
+    for (let i = 0; i < marksInputs.length; i++) {
+      obtainedMarks += Number(marksInputs[i].value);
+    }
+
+    const percentage = (obtainedMarks / totalMarks) * 100;
+
+    document.getElementById("result").innerHTML =
+      "Percentage: " + percentage.toFixed(2) + "%";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+
+:root{
+    --iron-grey: #4C5760;
+    --cool-steel: #93A8AC;
+    --sand-dune: #D7CEB2;
+    --khaki-beige: #A59E8C;
+    --dim-grey: #66635B;
+
+--celadon: #a7d49bff;
+--muted-teal: #92ac86ff;
+--stone-brown: #696047ff;
+--espresso: #55251dff;
+--dark-garnet: #5a1807ff;
+}
+
+
+body{
+    background: linear-gradient(to right , var(--celadon), var(--muted-teal), var(--stone-brown));
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.container{
+    background-color: whitesmoke;
+    height:85vh;
+    width:35vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+
+}
+
+.board{
+    background-color: var(--sand-dune);
+    height: 75vh;
+    width: 30vw;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;   /* Optional spacing between boxes */
+}
+
+
+button{
+    padding:2rem;
+    gap:0.1rem;
+    border-radius:0.25rem;
+    background-color: var(--khaki-beige);
+    border-color:transparent;
+    box-shadow: black;
+    opacity: 0.92;
+    font-size: 2rem;
+
+}
+
+

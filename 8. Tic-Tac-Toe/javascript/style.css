@@ -31,37 +31,69 @@ body{
 
 .container{
     background-color: whitesmoke;
-    height:85vh;
-    width:35vw;
+    /* height:85vh;
+    width:35vw; */
     display:flex;
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
-
+    
+    width: min(90vw, 450px);
+    height: min(90vw, 450px);
 }
+
+
 
 .board{
     background-color: var(--sand-dune);
-    height: 75vh;
-    width: 30vw;
-
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 10px;   /* Optional spacing between boxes */
+    gap: .5rem;
 }
 
 
-button{
-    padding:2rem;
+.board button{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     gap:0.1rem;
     border-radius:0.25rem;
     background-color: var(--khaki-beige);
     border-color:transparent;
-    box-shadow: black;
+    box-shadow: 6px 6px 0px 0px var(--dim-grey);
     opacity: 0.92;
     font-size: 2rem;
 
 }
 
 
+@media (max-width: 768px) {
+    .container {
+        width: 90vw;
+        height: 90vw;
+    }
+}
+
+
+#resetButton{
+    margin-top: 1.5rem;
+    padding:0.7rem;
+    border-radius: 0.25rem;
+    border:0.1rem white solid;
+    font-family: sans-serif;
+    color:white;
+    background-color: var(--espresso);
+    font-weight: 700;
+}
+
+button:disabled {
+    opacity: 1;
+    background-color: var(--khaki-beige);
+    color: black;
+    cursor: default;
+    box-shadow: 6px 6px 0px 0px var(--dim-grey);
+}

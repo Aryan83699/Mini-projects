@@ -21,7 +21,7 @@ const winPatterns = [
 ]
 
 
-
+// reset button
 const disButtons=()=>{
     for(let button of buttons){
         button.disabled=true;
@@ -37,6 +37,7 @@ const reset=()=>{
 }
 
 
+// winner checking and show
 const showWinner=(winner)=>{
 
     msg.innerText=`Winner is ${winner}`;
@@ -62,6 +63,8 @@ const checkWinner = () => {
 }
 }
 
+
+//turn
 buttons.forEach(button =>{
     button.addEventListener('click',()=>{
         if(turnO){ // player O

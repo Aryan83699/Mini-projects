@@ -1,10 +1,9 @@
 const board = document.querySelector(".board");
 const buttons = board.querySelectorAll("button");
 const resetButton = document.querySelector("#resetButton");
-console.log(buttons);
-console.log(resetButton);
-
-console.log(buttons[-1])
+const newButton=document.querySelector("#newButton");
+const msg_container=document.querySelector(".msg-container");
+const msg = document.querySelector("#msg");
 
 
 let turnO=true;
@@ -21,6 +20,48 @@ const winPatterns = [
     [2,5,8]
 ]
 
+
+
+const disButtons=()=>{
+    for(let button of buttons){
+        button.disabled=true;
+    }
+}
+
+const reset=()=>{
+    for(let button of buttons){
+        button.disabled=false;
+        button.innerText="";
+        turnO=true;
+    }
+}
+
+
+const showWinner=(winner)=>{
+
+    msg.innerText=`Winner is ${winner}`;
+    msg_container.classList.remove('hide');
+}
+
+const checkWinner = () => {
+    for (pattern of winPatterns){
+        let pos1=buttons[pattern[0]].innerText;
+        let pos2=buttons[pattern[1]].innerText;
+        let pos3=buttons[pattern[2]].innerText;
+
+        if (pos1=='X' && pos2=='X' && pos3=='X'){
+            showWinner(pos1);
+            disButtons();
+            
+        }
+        else if(pos1=='O' && pos2=='O' && pos3=='O'){
+        showWinner(pos2);
+        disButtons();
+        
+    }
+}
+}
+
 buttons.forEach(button =>{
     button.addEventListener('click',()=>{
         if(turnO){ // player O
@@ -34,15 +75,19 @@ buttons.forEach(button =>{
             
         }
         button.disabled=true;
+        checkWinner();
+        
     });
 
-    checkWinner();
+    
 
 });
 
 
-const checkWinner = () => {
-    for (pattern of winPatterns){
-        console.log(pattern);
-    }
-}
+resetButton.addEventListener('click',reset);
+
+newButton.addEventListener('click',()=>{
+    reset();
+    msg_container.classList.add('hide');
+});
+

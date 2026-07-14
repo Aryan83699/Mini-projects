@@ -26,8 +26,12 @@ body{
     justify-content: center;
     height:100vh;
     flex-direction: column;
-    gap:2rem;
+    gap:1.5rem;
+    overflow-x: hidden;
 }
+
+
+
 
 .container{
     background-color: whitesmoke;
@@ -80,7 +84,7 @@ body{
 
 
 #resetButton{
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     padding:0.7rem;
     border-radius: 0.25rem;
     border:0.1rem white solid;
@@ -96,4 +100,45 @@ button:disabled {
     color: black;
     cursor: default;
     box-shadow: 6px 6px 0px 0px var(--dim-grey);
+}
+
+
+#newButton{
+    margin-top: 0.5rem;
+    padding:0.7rem;
+    border-radius: 0.25rem;
+    border:0.1rem white solid;
+    font-family: sans-serif;
+    color:white;
+    background-color: var(--espresso);
+    font-weight: 700;
+}
+
+
+p{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    text-align: center;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:whitesmoke;
+    font-weight: 700;
+}
+
+.hide{
+    display: none;
+}
+
+
+.msg-container {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color:var(--dark-garnet);
+    padding:2rem;
+    border-radius:1rem;
+    text-align:center;
+    z-index: 1;
 }

@@ -23,6 +23,8 @@ let winPatterns=[
 
 let turnO=true;
 
+let moves=['X','O'];
+
 
 const disb_all =()=>{
     for(box of boxes){
@@ -70,14 +72,6 @@ function checkWinner(){
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 boxes.forEach(box => {

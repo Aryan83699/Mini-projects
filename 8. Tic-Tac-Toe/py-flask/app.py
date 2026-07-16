@@ -19,7 +19,11 @@ def choice():
     player_val1=request.form.get('O')
     player_val2=request.form.get('X')
     print(player_val1,player_val2)
-    return "baka"
+    
+    if player_val1:
+        return render_template('game.html',player=player_val1)
+
+    return render_template('game.html', player=player_val2)
 
 
 if __name__=="__main__":

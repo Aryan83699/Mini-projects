@@ -21,9 +21,17 @@ let winPatterns=[
 ];
 
 
-let turnO=true;
+if(player=='X'){
+   let turnO=false; 
+}
+else{
+    let turnO=true;
+}
 
 let moves=['X','O'];
+
+
+let humanTurn=true;
 
 
 const disb_all =()=>{
@@ -74,7 +82,8 @@ function checkWinner(){
 }
 
 
-boxes.forEach(box => {
+function play () {
+    boxes.forEach(box => {
     box.addEventListener('click',()=>{
         if(turnO){
             box.innerText="O";
@@ -91,3 +100,13 @@ boxes.forEach(box => {
     })
     
 });
+
+}
+
+
+if(humanTurn){
+    player()
+}
+else{
+    none 
+}

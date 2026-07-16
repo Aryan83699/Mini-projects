@@ -21,6 +21,14 @@ let winPatterns=[
 let turnO=true;
 
 
+const disb_all =()=>{
+    for(box of boxes){
+        box.disabled=true;
+    }
+}
+
+
+
 function checkWinner(){
     for(patterns of winPatterns){
         let pos1=boxes[patterns[0]].innerText;
@@ -29,10 +37,12 @@ function checkWinner(){
 
         if(pos1=='X' && pos2=='X' && pos3=='X'){
             win_container.innerText="Winner is X"
+            disb_all()
             
         }
         else if(pos1=='O' && pos2=='O' && pos3=='O'){
             win_container.innerText="Winner is O"
+            disb_all()
         }
     }
 }

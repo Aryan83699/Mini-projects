@@ -30,6 +30,10 @@ def choice():
 
     return render_template('game.html', player=player_val2)
 
+@app.route('/verify',methods=['GET','POST'])
+def verify():
+    return render_template('player.html')
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():

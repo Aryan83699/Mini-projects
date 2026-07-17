@@ -6,9 +6,14 @@ app=Flask(__name__)
 
 @app.route('/',methods=['GET'])
 def home():
+    return render_template('register.html')
+
+
+
+@app.route('/register',methods=['POST'])
+def register():
+    # Handle registration logic here
     return render_template('player.html')
-
-
 
 @app.route('/game')
 def game():

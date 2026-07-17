@@ -10,10 +10,10 @@ def home():
 
 
 
-@app.route('/register',methods=['POST'])
+@app.route('/register',methods=['POST','GET'])
 def register():
     # Handle registration logic here
-    return render_template('player.html')
+    return render_template('register.html')
 
 @app.route('/game')
 def game():
@@ -30,6 +30,10 @@ def choice():
 
     return render_template('game.html', player=player_val2)
 
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    return render_template('login.html')
 
 if __name__=="__main__":
     app.run(debug=True)

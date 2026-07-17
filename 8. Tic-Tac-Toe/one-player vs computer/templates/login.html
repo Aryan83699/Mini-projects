@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="static/styles/login.css" class="css">
 </head>
 <body>
-    login
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <p>Email Add:-</p> 
+            <input type="email" required placeholder="abc@outlook.com"><br>
+            <p>Password :-</p>
+            <input type="password" required minimum="5" placeholder="aryan@3056" >
+        </form>
+        <a href="otp.html">forgot password ?</a><br>
+        <button type="submit" value="Login">Login</button><br>
+        <a href="/register">Don't have an account ? Register </a>
+        <h2>Tic-Tac-Toe</h2>
+    </div>
 </body>
 </html>

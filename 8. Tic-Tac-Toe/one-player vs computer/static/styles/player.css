@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --lavendar_grey:#8e9aaf;
+    --thistle:#CBC0D3;
+    --soft_blush:#EFD3D7;
+    --lavendar_veil:#FEEAFA;
+    --lavendar:#DEE2FF;
+
+}
+
+
+.boxx,body{
+    height:100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(45deg, var(--lavendar),var(--lavendar_veil),var(--soft_blush),var(--thistle),var(--lavendar_grey));
+    /* background: linear-gradient(to right, var(--lavendar_grey), var(--thistle), var(--soft_blush), var(--lavendar_veil), var(--lavendar)); */
+}
+
+.player{
+    background-color: whitesmoke;
+    height: 85vh;
+    width: 90vw;
+    display: flex;
+    justify-content:space-evenly;
+    align-items:center;
+    border-radius: 0.5rem;
+
+}
+
+.boxx h1{
+    margin-top: 1.5rem;
+    font-family: sans-serif;
+    font-style: italic;
+    color:rgb(230, 22, 22);
+    margin-bottom: 0.8rem;
+    font-size: 3.5rem;
+    
+}

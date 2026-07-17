@@ -1,0 +1,117 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+:root{
+    --lavendar_grey:#8e9aaf;
+    --thistle:#CBC0D3;
+    --soft_blush:#EFD3D7;
+    --lavendar_veil:#FEEAFA;
+    --lavendar:#DEE2FF;
+
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    width:100%;
+    flex-direction: column;
+    background: linear-gradient(to right, var(--lavendar_grey), var(--thistle), var(--soft_blush), var(--lavendar_veil), var(--lavendar));
+    overflow-x:hidden;
+}
+
+h1{
+    margin-top:2rem;
+    color:rgb(73, 73, 73);
+    font-size:clamp(1.5rem, 5vw, 2.5rem);
+    font-style:italic;
+}
+
+.container{
+    margin-top:2rem;
+    background-color: var(--lavendar_grey);
+    width:30vw;
+    height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:2px solid transparent;
+    border-radius:0.5rem;
+}
+
+.board{
+    height:95%;
+    width:95%;
+    background-color: var(--soft_blush);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    aspect-ratio:1;
+    gap:0.25rem;
+    place-items:center;
+}
+
+.boxes{
+    display:flex;
+    width:91%;
+    height:91%;
+    align-items: center;
+    justify-content: center;
+    border:2px solid rgb(193, 191, 191);
+    border-radius:0.5rem;
+    background-color:var(--lavendar_veil);
+    opacity:0.8;
+    font-size:clamp(1.2rem, 5vw, 2.7rem);
+    box-shadow: 4px 4px 0px 0px var(--lavendar_grey);
+    
+}
+
+
+button:hover{
+    cursor:pointer;
+}
+
+
+#reset{
+    margin-top:1.5rem;
+    padding:0.7rem;
+    border-radius:0.5rem;
+    background-color: var(--lavendar_grey);
+    font-size:1.1rem;
+    color:white;
+    font-weight:600;
+
+}
+
+
+@media (max-width: 717px) {
+    .container {
+        width: 75vw;
+        height: 75vw;
+    }
+}
+
+.boxes:disabled{
+    opacity: 1;
+    color:black;
+}
+
+
+#newGame{
+    margin-top:1.5rem;
+    padding:0.7rem;
+    border-radius:0.5rem;
+    background-color: rgb(11, 11, 129);
+    font-size:1.1rem;
+    color:white;
+    font-weight:600;
+}
+
+
+.hide{
+    display:none;
+}

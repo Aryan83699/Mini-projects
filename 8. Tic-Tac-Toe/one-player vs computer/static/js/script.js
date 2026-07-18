@@ -55,10 +55,26 @@ const empty_boxes = () =>{
 newGame.addEventListener('click',()=>{
     empty_boxes();
     win_container.classList.add('hide');
+    gameOver=false;
+        if (player == 'X') {
+        turnO = false;
+        computer = 'O';
+    } else {
+        turnO = true;
+        computer = 'X';
+    }
 })
 
 resetButton.addEventListener('click',()=>{
     empty_boxes();
+        gameOver=false;
+        if (player == 'X') {
+        turnO = false;
+        computer = 'O';
+    } else {
+        turnO = true;
+        computer = 'X';
+    }
 }
 )
 
@@ -141,7 +157,7 @@ const comp_play=(player_val)=>{
 
     boxes[move].innerText = player_val;
     boxes[move].disabled = true;
-
+    checkWinner();
     enable_all();
     
 }

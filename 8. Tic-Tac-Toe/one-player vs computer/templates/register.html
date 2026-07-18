@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="static/styles/register.css" class="css">
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+            <div id="flash-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
     <div class="container">
         <h1>Registration</h1>
         <form action="/register" method="post">

@@ -73,5 +73,29 @@ def player():
 def login():
     return render_template('login.html')
 
+
+@app.route('/verify',methods=['GET','POST'])
+def verify():
+    email_log=request.form.get('email')
+    password_log=request.form.get('password')
+    print(email_log,password_log)
+    with open('users.csv','r') as file:
+        reader=csv.DictReader(file)
+        rows=list(reader)
+
+        for user in rows:
+            if user['email']==email_log:
+                if user['password']==password_log:
+                    return redirect(url_for('player'))
+                else:
+                    flash('Invalid Credentials')
+                    return render_template('login.html')
+            else:
+                flash('User Does not Exist')
+                return render_template('register.html')
+    
+    return render_template('register.html')
+
+
 if __name__=="__main__":
     app.run(debug=True)

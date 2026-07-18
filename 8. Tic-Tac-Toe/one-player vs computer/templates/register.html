@@ -11,11 +11,12 @@
         <h1>Registration</h1>
         <form action="/register" method="post">
             <p>Email Add:-</p> 
-            <input type="email" required placeholder="abc@outlook.com"><br>
+            <input type="email" name='email' required placeholder="abc@outlook.com"><br>
             <p>Password :-</p>
-            <input type="password" required minimum="5" placeholder="atleast 5 characters" >
+            <input type="password" name='password' required minimum="5" placeholder="atleast 5 characters" >
+            <button type="submit" value="Register">Register</button><br>
         </form>
-        <button type="submit" value="Register">Register</button><br>
+        
         <a href="/login">Already have account ? Login </a>
         <h2>Tic-Tac-Toe</h2>
     </div>

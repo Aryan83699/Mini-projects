@@ -24,7 +24,8 @@ body{
     align-items:center;
     justify-content:center;
     background-size: 400% 400%;
-    animation: moveGradient 10s ease infinite
+    animation: moveGradient 10s ease infinite;
+    flex-direction:column;
     
 }
 
@@ -166,6 +167,7 @@ button{
     background-color: rgb(75, 75, 224);
     color:white;
     font-weight: 700;
+    margin-top: 1.5rem;
 }
 
 .container input:hover{
@@ -185,3 +187,25 @@ button:hover{
 a:hover{
     color:rgb(243, 151, 151);
 }
+
+
+#flash-message{
+    color:rgb(255, 68, 68);
+    font-weight: 900;
+    font-style:bold;
+    font-family:'Times New Roman', Times, serif;
+    font-size: clamp(1rem,5vw,1.5rem);
+    margin-bottom: 1.25rem;
+    animation :glow 1.5s ease-in-out infinite alternate;
+
+}
+
+@keyframes glow{
+    from{
+        text-shadow: 0 0 5px rgba(247, 253, 135, 0.842);
+    }
+    to{
+        text-shadow: 0 0 20px rgba(247, 253, 135, 0.842), 0 0 30px rgba(247, 253, 135, 0.842);
+    }
+}
+

@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="static/styles/login.css" class="css">
 </head>
 <body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div id="flash-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
     <div class="container">
         <h1>Login</h1>
         <form action="/verify" method="post">
@@ -15,7 +28,6 @@
             <p>Password :-</p>
             <input type="password" required minimum="5" placeholder="aryan@3056" >
         </form>
-        <a href="otp.html">forgot password ?</a><br>
         <button type="submit" value="Login">Login</button><br>
         <a href="/register">Don't have an account ? Register </a>
         <h2>Tic-Tac-Toe</h2>

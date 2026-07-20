@@ -149,5 +149,32 @@ html,body{
     height:100%;
     background:black;
     opacity:0.7;
-    z-index:10000;
+    z-index:10;
+}
+
+
+.choices{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:30%;
+    left:28%;
+    gap:3.5rem;
+    z-index: 20;
+}
+
+.choices img{
+    width:12rem;
+    height:12rem;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor:pointer;
+
+}
+
+#rock,#scissor,#paper{
+    width:13rem;
+    height:13rem;
 }

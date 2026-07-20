@@ -1,0 +1,52 @@
+:root{
+    --light_blue:#a8d5e2;
+    --orange:orange;
+    --mustard:#FFD449;
+    --forest_green:#548C2F;
+    --black_forest:#104911;
+
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    overflow-x:hidden;
+    background:linear-gradient(to right,lightyellow,var(--mustard),var(--orange));
+    animation:bg-change 3s ease-in-out infinite
+}
+
+@keyframes bg-change{
+    0%{
+       background:linear-gradient(to right,lightyellow,var(--mustard),var(--orange)); 
+    }
+    50%{
+        background:linear-gradient(to right,var(--orange),var(--mustard),lightyellow);
+    }
+    100%{
+        background:linear-gradient(to right,lightyellow,var(--mustard),var(--orange));
+    }
+}
+
+
+
+
+.navbar{
+    background-color: var(--forest_green);
+    height:10vh;
+    width:100vw;
+    border: 3.5px solid var(--black_forest);
+    box-shadow: 0px 0.25rem 1rem 0.5rem var(--black_forest);
+}
+
+.navbar p{
+    color:white;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: clamp(1rem ,5vw, 2rem);
+    text-align: center;
+    line-height: 9vh;
+    
+}

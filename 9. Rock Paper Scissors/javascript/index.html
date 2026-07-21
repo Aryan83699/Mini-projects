@@ -20,14 +20,14 @@
                     <img src="images/person2.png" alt="person" >
                 </div>
                 <p>Player</p>
-                <p>Score : 0</p>
+                <p id="humanScore">Score : 0</p>
             </div>
             <div class="computer">
                 <div class="computer-logo">
                     <img src="images/computer.jpg" alt="computer" >
                 </div>
                 <p>Computer</p>
-                <p>Score : 0</p>
+                <p id="computerScore">Score : 0</p>
             </div>
         
             
@@ -44,16 +44,32 @@
 
 
     <div class="choices">
-        <div id="rock">
+        <div id="rock" class="choice">
             <img src="images/Rock.jpg" alt="rock">
         </div>
-        <div id="scissor">
+        <div id="scissor" class="choice">
             <img src="images/Scissor.jpg" alt="scissor">
         </div>
-        <div id="paper">
+        <div id="paper" class="choice">
             <img src="images/Paper.jpg" alt="paper">
         </div>
     </div>
+
+
+    <div class="player_choice  NO">
+        <div class="playerMove">
+            <img src="images/person2.png" alt="">
+        </div>
+    </div>
+
+    <div class="computer_choice  YES">
+        <div class="computerMove">
+            <img src="images/computer.jpg" alt="">
+        </div>
+    </div>
+
+    <button class="message">You Win</button>
+
 
 <script src='script.js'></script>
 

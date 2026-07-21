@@ -75,7 +75,7 @@ html,body{
     justify-content: center;
     align-items: center;
     height:70vh;
-    gap:clamp(10rem,5vw,20rem);
+    gap:clamp(15rem,5vw,30rem);
 }
 
 .sub-container2{
@@ -188,7 +188,7 @@ html,body{
 
 .popup{
         animation-name: popup;
-    animation-duration: 1.5s;
+    animation-duration: 1.3s;
     animation-timing-function: ease-in;
     /* animation-delay: 1s; */
     animation-iteration-count: 1;
@@ -208,12 +208,97 @@ html,body{
     }
 }
 
-@keyframes popdown {
-    0% {
-        transform: scale(1) translateY(0);
-    }
 
-    100% {
-        transform: scale(0.01) translateY(0);
+.YES,.NO{
+    visibility: visible;
+    position:fixed;
+
+}
+
+.YES{
+    position: fixed;
+}
+
+.NO img{
+    object-fit: cover;
+        width:10rem;
+        height:10rem;
+        border-radius: 50%;
+}
+
+
+.YES img{
+    object-fit: cover;
+        width:10rem;
+        height:10rem;
+        border-radius: 50%;
+}
+
+.player_choice{
+    left:6%;
+    top:50%;
+    animation-name: popenter;
+    animation-timing-function: ease-in;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes popenter {
+    0%{
+        transform:translateX(-50px) scale(0.2);
     }
+    50%{
+        transform:translateX(50px) scale(1.1);
+    }
+    100%{
+        transform:translateX(0px) scale(1);
+    }
+    
+}
+
+
+
+.computer_choice{
+    right:5%;
+    top:50%;
+    animation-name: popenter2;
+    animation-timing-function: ease-in;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes popenter2    {
+    0%{
+        transform:translateX(50px) scale(0.2);
+    }
+    50%{
+        transform:translateX(-50px) scale(1.1);
+    }
+    100%{
+        transform:translateX(0px) scale(1);
+    }
+    
+}
+
+
+.message{
+    position:fixed;
+    top:15%;
+    left:47%;
+    visibility: hidden;
+    padding: 1rem;
+    color:white;
+    border-radius: 1rem;
+    font-family: sans-serif;
+    font-weight: 800;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: var(--forest_green);
+    font-size: 1rem;
+    font-style: italic;
+
 }

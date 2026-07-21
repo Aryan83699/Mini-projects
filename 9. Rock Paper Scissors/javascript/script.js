@@ -11,6 +11,8 @@ const opt2=document.querySelector('.computerMove img');
 const compScore=document.querySelector('#computerScore');
 const hScore=document.querySelector('#humanScore');
 const message=document.querySelector('.message');
+const player_NO=document.querySelector('.player_choice');
+const computer_YES=document.querySelector('.computer_choice');
 
 let clicked=false;
 
@@ -21,12 +23,19 @@ let moves=['rock','scissor','paper'];
 let computerMove;
 
 
+const delay = () =>{
+    setTimeout(() => {
+        message.style.visibility='hidden';
+    }, 1500);
+}
+
 const humanwin = () =>{
     humanScore=humanScore+1;
     hScore.innerText=`Score :${humanScore}`;
     message.innerText='You Win';
     message.style.backgroundColor='#104911';
-    message.visibility='visible';
+    message.style.visibility='visible';
+    delay();
 }
 
 const computerwin = () =>{
@@ -34,7 +43,8 @@ const computerwin = () =>{
     compScore.innerText=`Score :${computerScore}`;
     message.innerText='Computer Win';
     message.style.backgroundColor='#9c4506';
-    message.visibility='visible';
+    message.style.visibility='visible';
+    delay()
 
 }
 
@@ -181,7 +191,8 @@ function checkWinner(humanMove) {
     if (humanMove == computerMove) {
             message.innerText='Match Draw';
             message.style.backgroundColor='black';
-            message.visibility='visible';
+            message.style.visibility='visible';
+            delay();
     }
     else if (humanMove == "rock") {
         if (computerMove == "scissor") {
@@ -216,7 +227,25 @@ choicesids.forEach((choose) => {
         let humanMove=choose.id;
         computerMove=moves[Math.floor(Math.random()*3)];
         console.log(computerMove);
-        things();
-        checkWinner(humanMove);
-    })
+        player_NO.classList.remove("NO");
+    computer_YES.classList.remove("YES");
+
+    // Restart animation
+    player_NO.classList.remove("animate-player");
+    computer_YES.classList.remove("animate-computer");
+
+    void player_NO.offsetWidth;
+    void computer_YES.offsetWidth;
+
+    player_NO.classList.add("animate-player");
+    computer_YES.classList.add("animate-computer");
+
+    things();
+    checkWinner(humanMove);
+
+    setTimeout(() => {
+        player_NO.classList.add("NO");
+        computer_YES.classList.add("YES");
+    }, 1500);
+        })
 });

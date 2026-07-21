@@ -115,8 +115,8 @@ html,body{
 
 .player-logo,.computer-logo{
     /* object-fit: cover; */
-    width:13remp;
-    height:13remp;
+    width:13rem;
+    height:13rem;
     margin-bottom: 1.5rem;
 }
 
@@ -210,7 +210,7 @@ html,body{
 
 
 .YES,.NO{
-    visibility: visible;
+    visibility: hidden;
     position:fixed;
 
 }
@@ -237,11 +237,7 @@ html,body{
 .player_choice{
     left:6%;
     top:50%;
-    animation-name: popenter;
-    animation-timing-function: ease-in;
-    animation-duration: 3s;
-    animation-delay: 1s;
-    animation-iteration-count: 1;
+    position: fixed;
 }
 
 
@@ -250,7 +246,7 @@ html,body{
         transform:translateX(-50px) scale(0.2);
     }
     50%{
-        transform:translateX(50px) scale(1.1);
+        transform:translateX(50px) scale(1.02);
     }
     100%{
         transform:translateX(0px) scale(1);
@@ -263,11 +259,17 @@ html,body{
 .computer_choice{
     right:5%;
     top:50%;
-    animation-name: popenter2;
-    animation-timing-function: ease-in;
-    animation-duration: 3s;
-    animation-delay: 1s;
-    animation-iteration-count: 1;
+    position: fixed;
+}
+
+
+
+.animate-player{
+    animation: popenter 0.8s ease;
+}
+
+.animate-computer{
+    animation: popenter2 0.8s ease;
 }
 
 
@@ -276,7 +278,7 @@ html,body{
         transform:translateX(50px) scale(0.2);
     }
     50%{
-        transform:translateX(-50px) scale(1.1);
+        transform:translateX(-50px) scale(1.02);
     }
     100%{
         transform:translateX(0px) scale(1);

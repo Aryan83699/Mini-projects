@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix India – Watch Shows Online, Watch Movies Online</title>
 <link rel="stylesheet" href="style.css" class="css">
-<link rel="icon" href="assets/N.jpg" type="image/x-icon">
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/18/Netflix_2016_N_logo.svg" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
-        New to Netflix? Try 7 days for ₹0.
+       <i class="fa-solid fa-gift"></i> &nbsp; New to Netflix? Try 7 days for ₹0.
     </nav>
     <div class="bg-main"></div>
     <main>
@@ -22,8 +26,10 @@
                     <!-- <p style="color:white;font-weight: 700;font-family: sans-serif;font-size: 1.5rem;">dfjlksda</p> -->
                 </div>
                 <div class="buttons">
+                    <!-- <i style="color:white;font-size: 3rem;" class="fa-solid fa-language"></i> -->
+                    
                     <select>
-                        <option value="English">English</option>
+                        <option value="English">🌐&nbsp;&nbsp;English </option>
                         <option value="Hindi">Hindi</option>
                     </select>
                     <button>Sign in</button>
@@ -31,7 +37,7 @@
             </div>
             <div class="main-hero">
                 <div class="text">
-                    <p>Unlimited movies,</p><br>
+                    <p>Unlimited movies,</p>
                     <p>shows, and more</p>
                     <p style="font-size:1.5rem;text-align: center;margin-top: 1rem;">Plans start at ₹149. Cancel anytime.</p>
                 </div>
@@ -45,9 +51,41 @@
                 </div>
             </div>
         </div>
+
+        <div class="border">
+            <h2 >Trending now</h2>
+        </div>
        
     </main>
+    <section>
+        <div class="sec_1">
+           <div class="carousel">
+    <button class="arrow left">&#10094;</button>
 
+    <div class="cards" id="cards">
+        <div class="card" style="background-image: url(assets/t1.webp);"><p>1</p></div>
+        <div class="card" style="background-image: url(assets/t2.webp);"><p>2</p></div>
+        <div class="card" style="background-image: url(assets/t3.webp);"><p>3</p></div>
+        <div class="card" style="background-image: url(assets/t4.webp);"><p>4</p></div>
+        <div class="card" style="background-image: url(assets/t5.webp);"><p>5</p></div>
+        <div class="card" style="background-image: url(assets/t6.webp);"><p>6</p></div>
+        <div class="card" style="background-image: url(assets/t7.webp);"><p>7</p></div>
+        <div class="card" style="background-image: url(assets/t8.webp);"><p>8</p></div>
+        <div class="card" style="background-image: url(assets/t9.webp);"><p>9</p></div>
+        <div class="card" style="background-image: url(assets/t10.webp);"><p>10</p></div>
+    </div>
+
+    <button class="arrow right">&#10095;</button>
+</div>
+            </div>
+        </div>
+        <div class="sec_2">
+
+        </div>
+       
+    </section>
     <!-- <img src="assets/logo.jpg" alt=""> -->
+
+    <script src="script.js"></script>
 </body>
 </html>

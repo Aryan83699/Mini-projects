@@ -373,8 +373,14 @@ gap:2.5rem;
     background-color: black;;
 }
 
-.container{
-    width:80vw;
+.container {
+    width: 80vw;
+    margin: 0 auto;
+    padding-top: 5rem;
+}
+
+.container .text {
+    margin-top: 0;
 }
 
 .container .text{
@@ -383,5 +389,25 @@ gap:2.5rem;
     font-weight: 700;
     color:white;
     margin-bottom: 1.5rem;
-    margin-top: 5rem;
+    margin-top: 1.5rem;
+}
+
+
+.que{
+    /* font-size: clamp(0.2rem,5vw,1.9rem); */
+    font-size: calc(1rem + 1vw);
+    color:white;
+    font-weight: 500;
+    width:100%;
+    background-color:rgb(45, 45, 45);
+    height:8vh;
+    border-radius: 0.1rem;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap:70%;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 1rem;
 }

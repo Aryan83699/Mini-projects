@@ -250,6 +250,11 @@ section{
     flex-direction: column-reverse;
 }
 
+.card:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
 .card p{
     font-size: 5rem;
     color: rgba(0,0,0,0.9);
@@ -350,6 +355,8 @@ gap:2.5rem;
     
 }
 
+
+
 .reasons_cards h1{
     font-size: 2rem;
     letter-spacing: -0.6px;
@@ -393,6 +400,9 @@ gap:2.5rem;
     margin-top: 1.5rem;
 }
 
+#try:hover{
+    background-color: rgb(122, 15, 15);
+}
 
 .que{
     /* font-size: clamp(0.2rem,5vw,1.9rem); */
@@ -413,6 +423,10 @@ gap:2.5rem;
     margin-bottom: 1rem;
 }
 
+.que:hover{
+    background-color: rgb(163, 158, 158);
+}
+
 footer{
     background-color: black;
     width: 100%;
@@ -430,14 +444,51 @@ footer{
 }
 
 .footer_1 #net-email{
-    padding-right: 30rem;
+    padding-right: 28rem;
     /* margin-top: 0.2rem; */
+
 
 }
 
 footer p{
     color: white;
     font-size: 1.25rem;
+    margin-top: 1.5rem;
+    font-weight: 450;
     
 }
 
+.footer_2{
+    width:80vw;
+    margin : 0 auto;
+}
+
+.cols{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+
+    /* border:2px solid white; */
+    height:20vh;
+}
+
+.content{
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content:start;
+    flex-direction: column;
+    gap:1rem;
+}
+
+.content a{
+    font-weight: 400;
+    color:white;
+    font-size: clamp(0.6rem,5vw,1.15rem);
+    letter-spacing: -0.5px;
+    /* word-spacing: -4.5px; */
+}
+
+.last p{
+    color:white;
+    font-size: 0.9rem;
+}

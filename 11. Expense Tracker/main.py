@@ -24,7 +24,7 @@ class Expenses(Base):
     exp_name:Mapped[str]=mapped_column(String(100),nullable=False)
     amount:Mapped[int]=mapped_column(nullable=False)
     category:Mapped[str]=mapped_column(String(100),nullable=False)
-    date=mapped_column(Date,default=date.today())
+    date=mapped_column(Date,default=date.today)
 
 Base.metadata.create_all(engine)
 
@@ -60,7 +60,7 @@ if exist is None:
 
 
 with Session(engine) as session:
-    result=session.query(Expenses).all()
+    result=session.query(Expenses).order_by(Expenses.date.desc()).all()
 
 
 # df=pd.DataFrame(columns=['id','exp_name','amount','category','date'])
@@ -73,5 +73,38 @@ for data in result:
 
 st.title('Personal Expense Tracker')
 st.dataframe(whole_data)
+
+
+
+# Adding Expenses
+
+@st.dialog("Add Expenses")
+def add_expense():
+    exp_name=st.text_input("Enter Product")
+    amount=st.number_input("Enter Amount",min_value=1)
+    category=st.selectbox("Select Cateogry",options=['Food','Utilities','Transport','Entertainment','Healthcare','Education','Shopping'])
+    date=st.date_input("Pick date")
+
+    if st.button('Add item'):
+        if not all((exp_name.strip(), amount, category, date)):
+            st.error("Error!!! All values must be filled")
+        else:
+            with Session(engine) as session:
+                try:
+                    session.add(Expenses(exp_name=exp_name, amount=amount, category=category, date=date))
+                    session.commit()
+                except:
+                    st.error("Invalid Data")
+            st.session_state["expense_added"] = True
+            st.rerun()
+            
+
+
+if st.session_state.get("expense_added"):
+    st.success("Expense added successfully!")
+    st.session_state["expense_added"] = False
+
+if st.button("Add Expense"):
+    add_expense()
 
 

@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 import os
 from datetime import date
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy
+
 
 #loading environment variables
 
@@ -70,11 +73,8 @@ whole_data=[]
 for data in result:
     whole_data.append({'id':data.id,'exp_name':data.exp_name,'amount':data.amount,'category':data.category,'date':data.date})
 
-
-st.title('Personal Expense Tracker')
-st.dataframe(whole_data)
-
-
+df=pd.DataFrame(whole_data)
+# Dialog Boxes
 
 # Adding Expenses
 
@@ -185,6 +185,69 @@ if st.session_state.get("expense_update"):
     
 
 
+# Main Page 
+
+st.title('Personal Expense Tracker')
+
+section = st.container()
+
+with section:
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.dataframe(whole_data)
+    # Buttons 
+
+    with col2:
+        if st.button("Remove Expense"):
+            remove_exp()
+
+        if st.button("Add Expense"):
+            add_expense()
+
+        if st.button("Change Expense"):
+            update_exp()
+
+
+
+tab1,tab2= st.tabs(['Category Wise Analysis','Date Wise Analysis'])
+
+
+with tab1:
+    fig, ax = plt.subplots(1,2,figsize=(20, 8))
+    ax=ax.flatten()
+    temp = df.groupby('category')['amount'].mean().reset_index()
+
+    ax[1].bar(temp['category'], temp['amount'])
+    ax[1].set_xlabel('Category')
+    ax[1].set_ylabel('Average Spent')
+    ax[1].set_title('Expenses by Category')
+    plt.xticks(rotation=45)
+   
+
+    ax[0].pie(
+        temp['amount'],
+        labels=temp['category'],
+        autopct='%1.1f%%'
+    )
+
+    ax[0].set_title('Expenses by Category')
+ 
+
+    st.pyplot(fig)    
+
+with tab2:
+    fig= plt.subplots(figsize=(12, 6))
+    temp = df.groupby('date')['amount'].mean().reset_index()
+    plt.plot(temp['date'], temp['amount'])
+    plt.xlabel('Date')
+    plt.ylabel('Average Spent')
+    plt.title('Expenses by Category')
+    plt.xticks(rotation=45)
+    st.pyplot(plt)
+
+
+ 
 
 
 
@@ -200,14 +263,7 @@ if st.session_state.get("expense_update"):
 
 
 
-# Buttons 
 
 
-if st.button("Remove Expense"):
-    remove_exp()
 
-if st.button("Add Expense"):
-    add_expense()
 
-if st.button("Change Expense"):
-    update_exp()

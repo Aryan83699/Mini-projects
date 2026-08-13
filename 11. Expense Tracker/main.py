@@ -104,7 +104,60 @@ if st.session_state.get("expense_added"):
     st.success("Expense added successfully!")
     st.session_state["expense_added"] = False
 
+
+# Removal of expenses 
+
+@st.dialog("Remove Expenses")
+def remove_exp():
+    expense_id=st.number_input('Enter valid ID',min_value=1)
+    category=st.selectbox("Select Cateogry",options=['Food','Utilities','Transport','Entertainment','Healthcare','Education','Shopping'])
+
+    if st.button('Remove Item'):
+        if not all([id,category]):
+            st.error('Error !!! All values must be filled')
+        else:
+            with Session(engine) as session:
+                del_expense=session.get(Expenses,expense_id)
+
+                if del_expense:
+                    session.delete(del_expense)
+                    session.commit()
+                    st.session_state["expense_remove"] = True
+                    st.rerun()
+                else:
+                    st.error("Invalid Expense Id")
+
+
+
+if st.session_state.get("expense_remove"):
+    st.success("Expense removed successfully!")
+    st.session_state["expense_remove"] = False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Buttons 
+
+
+if st.button("Remove Expense"):
+    remove_exp()
+
 if st.button("Add Expense"):
     add_expense()
-
 

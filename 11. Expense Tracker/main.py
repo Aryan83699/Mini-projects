@@ -137,6 +137,54 @@ if st.session_state.get("expense_remove"):
 
 
 
+def update(choice,expense_id,change):
+
+    with Session(engine) as session:
+        product=session.query(Expenses).filter(Expenses.id==expense_id).first()
+
+        if st.button('Update Expense'):
+            if product:
+                # product[choice]=change
+                setattr(product,choice,change)
+                session.commit()
+                st.session_state["expense_update"] = True
+                st.rerun()
+            else:
+                st.error('Expense record doesnt exist')
+
+
+
+
+# updating an expense details
+
+@st.dialog('Update Expense')
+def update_exp():
+    expense_id=st.number_input("Enter Id")
+    choice=st.selectbox("What do you want to update",options=['exp_name','amount','category','date'])
+
+
+
+    if choice=='category':
+        category=st.selectbox('Choose New Category',options=['Food','Utilities','Transport','Entertainment','Healthcare','Education','Shopping'])
+        update(choice,expense_id,category)
+    elif choice=='amount':
+        amount=st.number_input('Enter New Amount',min_value=1)
+        update(choice,expense_id,amount)
+    elif choice=='date':
+        date=st.date_input('Enter new Date')
+        update(choice,expense_id,date)
+    else:
+        exp_name=st.text_input('Enter Name')
+        update(choice,expense_id,exp_name)
+
+
+if st.session_state.get("expense_update"):
+    st.success("Expense updated successfully!")
+    st.session_state["expense_update"] = False
+
+    
+
+
 
 
 
@@ -161,3 +209,5 @@ if st.button("Remove Expense"):
 if st.button("Add Expense"):
     add_expense()
 
+if st.button("Change Expense"):
+    update_exp()

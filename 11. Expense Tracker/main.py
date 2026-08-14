@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 import numpy
 
 
-# =========================================================
+ 
 # Loading environment variables
-# =========================================================
+
 
 load_dotenv()
 
@@ -21,9 +21,9 @@ DATA = os.getenv('DATABASE_URL')
 engine = create_engine(DATA)
 
 
-# =========================================================
+ 
 # Database Model
-# =========================================================
+ 
 
 class Base(DeclarativeBase):
     pass
@@ -42,17 +42,17 @@ class Expenses(Base):
 Base.metadata.create_all(engine)
 
 
-# =========================================================
+ 
 # Checking Existing Data
-# =========================================================
+ 
 
 with Session(engine) as session:
     exist = session.scalar(select(Expenses).limit(1))
 
 
-# =========================================================
+ 
 # Adding Sample Data
-# =========================================================
+ 
 
 if exist is None:
 
@@ -136,9 +136,9 @@ if exist is None:
         session.commit()
 
 
-# =========================================================
+ 
 # Getting Data
-# =========================================================
+ 
 
 with Session(engine) as session:
     result = session.query(
@@ -164,9 +164,9 @@ for data in result:
 df = pd.DataFrame(whole_data)
 
 
-# =========================================================
+ 
 # CSS
-# =========================================================
+ 
 
 st.markdown(
     """
@@ -334,14 +334,14 @@ st.markdown(
 )
 
 
-# =========================================================
+ 
 # Dialog Boxes
-# =========================================================
+ 
 
 
-# =========================================================
+ 
 # Adding Expenses
-# =========================================================
+ 
 
 @st.dialog("Add Expenses")
 def add_expense():
@@ -420,9 +420,9 @@ if st.session_state.get("expense_added"):
     st.session_state["expense_added"] = False
 
 
-# =========================================================
+ 
 # Removal of Expenses
-# =========================================================
+ 
 
 @st.dialog("Remove Expenses")
 def remove_exp():
@@ -496,9 +496,9 @@ if st.session_state.get("expense_remove"):
     ] = False
 
 
-# =========================================================
+ 
 # Update Expense
-# =========================================================
+ 
 
 def update(
     choice,
@@ -540,9 +540,9 @@ def update(
                 )
 
 
-# =========================================================
+ 
 # Updating Expense Details
-# =========================================================
+ 
 
 @st.dialog('Update Expense')
 def update_exp():
@@ -635,9 +635,9 @@ if st.session_state.get("expense_update"):
     ] = False
 
 
-# =========================================================
+ 
 # Main Page
-# =========================================================
+ 
 
 st.title(
     'Personal Expense Tracker'
@@ -703,9 +703,9 @@ with section:
             update_exp()
 
 
-# =========================================================
+ 
 # Analysis Tabs
-# =========================================================
+ 
 
 tab1, tab2 = st.tabs(
     [
@@ -715,9 +715,9 @@ tab1, tab2 = st.tabs(
 )
 
 
-# =========================================================
+ 
 # Category Wise Analysis
-# =========================================================
+ 
 
 with tab1:
 
@@ -777,9 +777,9 @@ with tab1:
     st.pyplot(fig)
 
 
-# =========================================================
+ 
 # Date Wise Analysis
-# =========================================================
+ 
 
 with tab2:
 

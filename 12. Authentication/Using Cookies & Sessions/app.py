@@ -1,4 +1,4 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI , Request
 from fastapi.templating import Jinja2Templates
 from smtplib import SMTP
 from email.message import EmailMessage
@@ -6,13 +6,12 @@ import os
 from dotenv import load_dotenv
 import random
 
+
 load_dotenv()
 
 app=FastAPI()
 
-
-
-
+templates=Jinja2Templates(directory='templates')
 
 def send_otp():
     msg=EmailMessage()
@@ -34,10 +33,10 @@ def send_otp():
 
 
 @app.get('/')
-def home():
-    return {'Welcome'}
+def home(request : Request ):
+    return templates.TemplateResponse(request=request , name="login.html")
 
-@app.get('/email')
-def email():
-    send_otp()
-    return 'Daddys Home'
+@app.get('/register')
+def register(request : Request ):
+    return templates.TemplateResponse(request=request  , name="register.html")
+

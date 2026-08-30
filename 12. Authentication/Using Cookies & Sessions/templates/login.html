@@ -6,10 +6,11 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="">
+    <form action="/login" method="post">
         <div>
-           Enter Email :-  <input type="email" placeholder="Enter Email....." required> <br>
-           Enter Password :-  <input type="password" placeholder="Enter password....." required>
+           Enter Email :-  <input type="email" placeholder="Enter Email....." name="email" required> <br>
+           Enter Password :-  <input type="password" placeholder="Enter password....." name="pswd" required>
+           <input type="submit" value="Login">
         </div>
         <a href="/register">No Account ? Register</a>
     </form>

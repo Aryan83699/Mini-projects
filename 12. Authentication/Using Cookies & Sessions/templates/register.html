@@ -6,12 +6,17 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="">
+    <form action="/register" method="post">
         <div>
-           Enter Email :-  <input type="email" placeholder="Enter Email....." required> <br>
-           Enter Password :-  <input type="password" placeholder="Enter password....." required>
+           Enter Email :-  <input type="email" name="email" placeholder="Enter Email....." required> <br>
+           Enter Password :-  <input type="text" name="ps_text" placeholder="Enter password....." required>
+           Confirm Password :-  <input type="password" name="pswd" required>
+           <input type="submit" value="Register">
         </div>
         <a href="/">Already Account ? Login</a>
     </form>
+    <div class="message">
+        {{message}}
+    </div>
 </body>
 </html>

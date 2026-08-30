@@ -36,12 +36,14 @@ def get_db():
         db.close()
 
 
-def send_otp():
+def send_otp(user_email,request):
     msg=EmailMessage()
+    user_otp=str(round(random.random()*10000))
+    request.session['user_otp']=user_otp
     msg['Subject']='Email Verification'
     msg['From']=os.getenv('EMAIL_ID')
-    msg['To']=os.getenv('EMAIL_ID')
-    msg.set_content(str(round(random.random()*10000)))
+    msg['To']=user_email
+    msg.set_content(f"Your OTP is {user_otp}")
 
 
 
@@ -62,6 +64,27 @@ def home(request : Request ):
 @app.get('/register')
 def register(request : Request ):
     return templates.TemplateResponse(request=request  , name="register.html")
+
+
+@app.post('/register')
+async def register_verify(request : Request):
+    form = await request.form()
+    email=form['email']
+    pswd1=form['ps_text']
+    pswd2=form['pswd']
+
+    
+
+    if pswd1 != pswd2 :
+        return templates.TemplateResponse(request=request , name='register.html' ,context={'message':'Password doesnt match !!!'})
+
+    request.session['email']=email
+    request.session['password']=pswd2
+
+    send_otp(email,request)
+    return RedirectResponse(url='/otp',status_code=303)
+
+    
 
 
 @app.get('/main')
@@ -97,17 +120,12 @@ async def login(
 
     verify = db.query(User).filter(User.email == email).first()
 
-    if not verify:
+    if not verify or verify.password != pswd:
         raise HTTPException(
             status_code=401,
-            detail='Invalid Email'
+            detail='Invalid Email or Password'
         )
 
-    if verify.password !=pswd:
-        raise HTTPException(
-            status_code=401,
-            detail='Invalid Password'
-        )
 
     # Generate the ID
     request.session['user_id']=verify.id
@@ -116,3 +134,28 @@ async def login(
 
     return RedirectResponse(url='/main')
 
+
+@app.get('/otp')
+def otp(request : Request):
+    return templates.TemplateResponse(request=request,name='otp.html')
+
+
+@app.post('/verify-otp')
+async def verify_otp(request:Request , db:Annotated[Session,Depends(get_db)]):
+    temp_otp=request.session.get('user_otp')
+    form = await request.form()
+    get_otp=form['otp']
+    
+
+    if temp_otp != get_otp:
+        return templates.TemplateResponse(request=request , name='register.html' ,context={'message':'Incorrect OTP !!!'})
+
+    request.session['user_id']=random.random()*1000
+
+    db.add(
+        User(id=request.session.get('user_id'),email=request.session.get('email'),password=request.session.get('password'),role='user')
+    )
+    db.commit()
+
+    return templates.TemplateResponse(request=request , name='main.html')
+    

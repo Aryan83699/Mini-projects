@@ -80,6 +80,7 @@ async def register_verify(request : Request):
 
     request.session['email']=email
     request.session['password']=pswd2
+    request.session['purpose']='register'
 
     send_otp(email,request)
     return RedirectResponse(url='/otp',status_code=303)
@@ -121,9 +122,12 @@ async def login(
     verify = db.query(User).filter(User.email == email).first()
 
     if not verify or verify.password != pswd:
-        raise HTTPException(
-            status_code=401,
-            detail='Invalid Email or Password'
+        return templates.TemplateResponse(
+            request=request,
+            name='login.html',
+            context={
+                'message': 'Invalid Email or Password'
+            }
         )
 
 
@@ -150,6 +154,9 @@ async def verify_otp(request:Request , db:Annotated[Session,Depends(get_db)]):
     if temp_otp != get_otp:
         return templates.TemplateResponse(request=request , name='register.html' ,context={'message':'Incorrect OTP !!!'})
 
+    if request.session.get('purpose')=='forgotten':
+        return RedirectResponse(url='/forgot-otp',status_code=303)
+
     request.session['user_id']=random.random()*1000
 
     db.add(
@@ -158,4 +165,31 @@ async def verify_otp(request:Request , db:Annotated[Session,Depends(get_db)]):
     db.commit()
 
     return templates.TemplateResponse(request=request , name='main.html')
+
+@app.post('/forgot')
+async def forgot(request:Request , db:Annotated[Session,Depends(get_db)]):
+    form=await request.form()
+    email=form['email']
+    password=form['pswd']
+
+    user=db.query(User.email==email).first()
+
+    if not user:
+        return templates.TemplateResponse(request=request,name='register.html',context={'message':'User not found'})
+
+    request.session['email']=email
+    request.session['password']=password 
+    request.session['purpose']='forgotten'
+    send_otp(email,request)
+    return RedirectResponse(url='/otp',status_code=303)
+
+
+@app.get('/forgot-otp')
+async def forgot_otp(request : Request , db:Annotated[Session,Depends(get_db)]):
+    user_obj=db.query(User).filter(User.email==request.session.get('email')).first()
+    user_obj.password=request.session.get('password')
+    db.add(user_obj)
+    db.commit()
+    return templates.TemplateResponse(request=request,name='main.html')
+
     

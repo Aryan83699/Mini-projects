@@ -1,4 +1,4 @@
-from sqlalchemy.orm import mapped_column,Mapped,DeclarativeBase,sessionmaker
+from sqlalchemy.orm import mapped_column,Mapped,DeclarativeBase,sessionmaker,Session
 from sqlalchemy import create_engine,Integer,Date,String
 from dotenv import load_dotenv
 from datetime import datetime
@@ -36,9 +36,10 @@ with SessionLocal() as session:
     data=session.query(Customers).first()
     if data:
         pass
-        session.commit()
+        session.close()
     else:
         session.add(
-            Customers(id=2005,email='aryansingha887@gmail.com',role='admin',hash_password='Aryan@2005')
+            Customers(id=2005,email='aryansingha887@gmail.com',role='admin',hash_password='$2b$12$QFXI0rpAaz411vWj53sTiOca6MtOBlvq2R7Pf1ZrIp3I5WVXIUMFG')
         )
         session.commit()
+        session.close()

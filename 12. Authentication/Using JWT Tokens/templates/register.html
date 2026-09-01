@@ -6,11 +6,15 @@
     <title>Registration</title>
 </head>
 <body>
+    <h2>Register</h2>
     <form action="/register" method="post">
         <input type="email" name="username">
         <input type="password" name="password">
         <input type="submit" value="submit">
     </form>
-
+     <a href="/">Have Account ? Login</a>
+    <div class="message">
+       <p style="color:red;font-weight: 650;">{{message}}</p> 
+    </div>
 </body>
 </html>

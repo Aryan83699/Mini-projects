@@ -6,11 +6,17 @@
     <title>Login</title>
 </head>
 <body>
+    <h2>Login Page</h2>
     <form action="/login" method="post">
         <input type="email" name="username">
         <input type="password" name="password">
         <input type="submit" value="submit">
     </form>
+    <a href="/register">No Account ? Register</a>
 
+
+    <div class="message">
+       <p style="color:red;font-weight: 650;">{{message}}</p> 
+    </div>
 </body>
 </html>

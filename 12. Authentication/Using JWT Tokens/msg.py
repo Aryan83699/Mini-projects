@@ -3,6 +3,7 @@ from smtplib import SMTP
 import secrets
 import os
 from dotenv import load_dotenv
+from fastapi import Request
 
 
 load_dotenv()
@@ -10,7 +11,7 @@ load_dotenv()
 
 
 
-def send_messages(user_email:str):
+def send_messages(user_email:str,request:Request):
     otp="".join(str(secrets.randbelow(10)) for i in range(6))
     msg=EmailMessage()
     msg['Subject']='OTP Verification'
@@ -23,4 +24,5 @@ def send_messages(user_email:str):
         smtp.login(user=os.getenv("EMAIL") , password=os.getenv("PSWD"))
         smtp.send_message(msg)
 
+    request.session["OTP"]=otp
 

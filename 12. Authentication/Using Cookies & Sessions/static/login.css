@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+
+body{
+    background-image:linear-gradient(to right, #3B0A45, #6A2C91, #B84E8C);
+    height:100%;
+    width:100%;
+}
+
+
+@media (min-width: 768px) {
+    .hero {
+        height: 68vh;
+        width:26vw;
+    }
+}

@@ -12,10 +12,17 @@ from db import SessionLocal , User
 from datetime import datetime , timezone
 import secrets
 from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+
+
+
 
 load_dotenv()
 
 app=FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 templates=Jinja2Templates(directory='templates')
 

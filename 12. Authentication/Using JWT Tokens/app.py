@@ -112,6 +112,7 @@ def home(token:Annotated[str,Depends(oauth2_scheme)],db:Annotated[Session,Depend
 
     if not token:
         return templates.TemplateResponse(request=request,context={'message':'not authenticated'},name='register.html')
+    
     try:
 
         username=jwt_token.decode(token)

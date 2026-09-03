@@ -1,4 +1,5 @@
-from fastapi import FastAPI,APIRouter
+from fastapi import FastAPI,APIRouter,Query,HTTPException
+from typing import Annotated
 import api
 
 
@@ -15,3 +16,11 @@ def home():
 @teams.get('/names')
 def names():
     return api.get_teams()
+
+@teams.get('/teamVteam')
+def teamVsteam(team1:Annotated[str,Query(title="Team Name")],team2:Annotated[str,Query(title="Team Name")]):
+
+    data=api.teamVteam(team1,team2)
+    if data.get('Total Matches')==0:
+        raise HTTPException(status_code=404,detail="No Match or No Data related to team")
+    return data

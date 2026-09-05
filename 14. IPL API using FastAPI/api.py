@@ -38,7 +38,7 @@ def get_teams():
 
 
 def teamVteam(team1:str,team2:str):
-    matches=matches[((matches['team1']==team1) & (matches['team2']==team2)) | ((matches['team1']==team2) & (matches['team2']==team1))]
+    temp_matches=matches[((matches['team1']==team1) & (matches['team2']==team2)) | ((matches['team1']==team2) & (matches['team2']==team1))]
     total_matches=matches.shape[0]
     team1Wins=matches[matches['winner']==team1].shape[0]
     team2Wins=matches[matches['winner']==team2].shape[0]
@@ -52,7 +52,7 @@ def teamVteam(team1:str,team2:str):
 
 
 
-def team_overall(team:str):
+def team_record(team:str):
     temp_matches=matches[(matches['team1']==team) | (matches['team2']==team)].copy()
     matches_played=temp_matches.shape[0],
     wins=temp_matches[(temp_matches['winner']==team) & (temp_matches['result']=='normal')].shape[0]
@@ -68,8 +68,14 @@ def team_overall(team:str):
 
 
 
-def team_record(team:str):
+def team_overall(team:str):
     temp_matches=matches[(matches['team1']==team) | (matches['team2']==team)].copy()
-    # overall=
-    pass
+    temp_data=team_record(team)
+    unique_teams=matches.team1.unique()
+    against={team2:teamVteam(team,team2) for team2 in unique_teams}
+
+    return {
+        "Overall Record":temp_data,
+        "Against Record":against
+    }
 

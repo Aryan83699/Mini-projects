@@ -24,3 +24,11 @@ def teamVsteam(team1:Annotated[str,Query(title="Team Name")],team2:Annotated[str
     if data.get('Total Matches')==0:
         raise HTTPException(status_code=404,detail="No Match or No Data related to team")
     return data
+
+@teams.get('/teams-record')
+def teams_record(team:Annotated[str,Query(title="Team Name")]):
+    data=api.team_overall(team)
+    if not data:
+        raise HTTPException(status_code=404,detail="No Match or No Data related to team")
+    return data
+    

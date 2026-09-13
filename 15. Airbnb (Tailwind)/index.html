@@ -9,10 +9,10 @@
   </head>
 <body>
 <nav class="px-6 py-7  h-10 flex justify-between items-center">
-  <div class="icon my-2 shrink-0">
+  <div class="icon my-2  ">
     <svg width="24" height="26" viewBox="0 0 1007 1080" style="display:block"><path d="M949.278 666.715C875.957 506.859 795.615 344.664 713.713 184.809C698.893 155.177 670.813 98.2527 645.852 67.8412C609.971 24.1733 556.93 0.779785 503.109 0.779785C449.288 0.779785 396.247 24.1733 360.366 67.8412C335.406 98.2527 307.325 155.177 292.505 184.809C210.603 344.664 130.262 506.859 56.9404 666.715C47.5802 687.769 24.9598 737.675 16.3796 760.289C6.23941 787.581 0.779297 817.213 0.779297 846.845C0.779297 975.509 101.401 1079.22 235.564 1079.22C346.326 1079.22 434.468 1008.26 503.109 934.18C571.751 1008.26 659.892 1079.22 770.655 1079.22C904.817 1079.22 1006.22 975.509 1006.22 846.845C1006.22 817.213 999.979 787.581 989.839 760.289C981.259 737.675 958.638 687.769 949.278 666.715ZM503.109 810.195C447.728 738.455 396.247 649.56 396.247 577.819C396.247 506.079 446.948 470.209 503.109 470.209C559.27 470.209 610.751 508.419 610.751 577.819C610.751 647.22 558.49 738.455 503.109 810.195ZM770.655 998.902C688.628 998.902 618.271 941.557 555.955 872.656C620.205 792.541 691.093 679.121 691.093 577.819C691.093 458.513 598.271 389.892 503.109 389.892C407.947 389.892 315.906 458.513 315.906 577.819C315.906 679.098 386.294 792.478 450.318 872.593C387.995 941.526 317.614 998.902 235.564 998.902C146.642 998.902 81.1209 931.061 81.1209 846.845C81.1209 826.57 84.241 807.856 91.2611 788.361C98.2812 770.426 120.902 720.52 130.262 701.025C203.583 541.17 282.365 380.534 364.267 220.679C379.087 191.047 404.047 141.921 422.768 119.307C443.048 94.3538 471.129 81.0975 503.109 81.0975C535.09 81.0975 563.17 94.3538 583.451 119.307C602.171 141.921 627.132 191.047 641.952 220.679C723.854 380.534 802.635 541.17 875.957 701.025C885.317 720.52 907.937 770.426 914.957 788.361C921.978 807.856 925.878 826.57 925.878 846.845C925.878 931.061 859.576 998.902 770.655 998.902Z" fill="red"></path></svg>
   </div>
-  <p class="text-md font-semibold shrink-0 text-gray-700 ">
+  <p class="text-md font-semibold   text-gray-700 ">
     Airbnb your place 
   </p>
 </nav>
@@ -24,25 +24,136 @@
     <p class="text-md text-gray-500">Find and book unique accomodation on Airbnb</p>
     <div class="location border border-gray-500 mt-1 p-2.5 rounded-lg ">
       <p class="text-[0.7rem]">Location </p>
-      <input type="text" value="Mumbai, India ">
+      <input type="text" value="Mumbai, India " class="pr-30">
     </div>
-    <div class="check flex border border-gray-500 mt-1 p-2.5 rounded-lg gap-6 items-center">
+    <div class="check flex border border-gray-500 mt-1 p-2.5 rounded-lg gap-2 items-center">
       <div class="check-in">
         <p class="text-[0.7rem]">Check in </p>
-        <input type="date">
+        <input type="text" placeholder="Add date" onfocus="this.type='date'"  onblur="if (!this.value) this.type='text'">
       </div>
      <hr class="h-5 border-l border-gray-400">
 
       <div class="check-out">
         <p class="text-[0.7rem]">Check out </p>
-        <input type="date">
+        <input type="text" placeholder="Add date" onfocus="this.type='date'"  onblur="if (!this.value) this.type='text'">
       </div>
     </div>
-    <button class="bg-red-500 text-white  text-lg p-2.5 rounded-xl mt-1.5 flex items-center justify-center gap-2" style="cursor:pointer">
-      <img src="/public/magnifying-glass-solid-full (1).svg" height="20px" width="20px" alt="">Search
+    <button class="bg-red-600 text-white  text-md p-2.5 rounded-xl mt-1.5 flex items-center justify-center gap-2" style="cursor:pointer">
+      <img src="/magnifying-glass-solid-full (1).svg" height="20px" width="20px" alt="">Search
     </button>
   </div>
+
+  <div class="section-2 mt-23 px-6">
+    <p class="text-xl font-medium text-center mb-12">Quick stats about holiday rentals in Mumbai </p>
+    <div class="cards flex flex-col gap-4">
+      <div class="card bg-gray-50 rounded-xl px-2.5 py-4.5 flex gap-6.5 items-center ">
+        <div class="left">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/22958209-36f1-44f2-a635-086af7a5685d.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Total holdiay rentals</h1>
+          <p class="text-sm text-gray-400">Explore 5,650 holiday rentals in Mumbai</p>
+        </div>
+      </div>
+    
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/cdd4f990-1593-4f8e-903f-16134d7334af.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Verified guest reviews</h1>
+          <p class="text-sm text-gray-400">Over 128,720 verified reviews to help you choose</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/6615a726-43c2-4ede-8130-96fdcfbe7ecb.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Family-friendly holiday rentals</h1>
+          <p class="text-sm text-gray-400">1,670 properties offer extra space * child-friendly amenities</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/c7f2349b-95c2-4207-8ab8-5a5be5d7a428.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Pet friendly holiday rentals</h1>
+          <p class="text-sm text-gray-400">Find 1,280  rentals that welcome pets</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/db506967-edff-4312-8e77-db1bec32df76.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Holiday rentals with a pool</h1>
+          <p class="text-sm text-gray-400">350 properties features pools</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/38167e27-32fb-43c5-8155-41c601e423db.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Rentals with dedicated workspace</h1>
+          <p class="text-sm text-gray-400">3,390 properties have a dedicated workspace</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/23716874-f3d2-4747-aaa2-710dbe5d7f3a.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Wifi availability</h1>
+          <p class="text-sm text-gray-400">5,420 of Mumbai holiday rentals  include wifi access</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/501d0dcf-d6fd-437d-9a0d-53df8d1f88ac.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">Popular amenities for guests</h1>
+          <p class="text-sm text-gray-400">Guests love Self check-in, Gym and BBQ grill across Mumbai rentals</p>
+        </div>
+      </div>
+
+      <div class="card bg-gray-50 rounded-xl px-0 py-4.5 flex gap-2.5 items-center justify-evenly ">
+        <div class="left p-3">
+          <img src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-seo-landing-page-assets/original/cb84cd8d-9063-49f3-be33-8673edea2201.png?im_w=120" class="w-[2rem] h-[2rem]" alt="room">
+        </div>
+        <div class="right">
+          <h1 class="font-medium text-md">4.5 Average ratings</h1>
+          <p class="text-sm text-gray-400">Mumbai stays receives an average rating of 4.5 out of 5 from guests</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
 </main>
 
+
+<div class="search-bar fixed hidden bottom-0 left-0 w-full z-50">
+  <div class="container flex justify-center items-center border border-gray-100 h-25 bg-gray-50">
+    <button class="bg-red-600 text-white text-md px-10 py-2 rounded-md w-fit">
+      Start your search
+    </button>
+  </div>
+</div>
+
+
+
+<script src="src/script.js"></script>
 </body> 
 </html>

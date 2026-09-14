@@ -1,14 +1,13 @@
 <div align="center">
 
-# 📚 Mini Projects
+# Mini Projects
 
-A collection of small projects built while learning, practicing, and exploring new ideas.
+A collection of small projects created for practice, experimentation, and learning.
 
 </div>
 
 ---
 
+Each folder contains a separate mini project created while practicing and exploring different ideas.
 
-Each folder contains a separate mini project.
-
-⭐ Feel free to explore the projects!
+Feel free to explore the projects!

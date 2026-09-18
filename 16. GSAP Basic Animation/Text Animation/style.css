@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+html,body{
+    height:100%;
+    width:100%;
+    background-color: black;
+}
+
+
+div span{
+    display:inline-block;
+}
+
+main{
+    height:100%;
+    background-image:url("https://images.pexels.com/photos/17561258/pexels-photo-17561258.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.6 ;
+}
+

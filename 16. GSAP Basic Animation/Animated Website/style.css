@@ -31,6 +31,7 @@ nav{
     height:10vh;    
     width:100vw;
     background-color: white;
+    z-index: 10;
     
 }
 
@@ -135,7 +136,7 @@ main{
 }
 
 
-section{
+.section-2,section{
     padding:1.2rem 1.75rem;
     width:100%;
     height:90vh;
@@ -177,7 +178,9 @@ section{
 }
 
 .card .right img{
-    object-fit: cover;
+    height: 180px;
+    width:200px;
+    object-fit: contain;
 }
 
 
@@ -193,10 +196,34 @@ section{
 }
 
 
-.card .left h2{
-    font-size: 2rem;
-     background-color:rgb(168, 241, 20);
+.card .left .left-h2{
+
+     display: flex;
+     flex-direction: column;
+     
      /* color:aqua; */
+}
+
+
+.left-dark span{
+    font-size: 1.7rem;
+    font-weight: 600;
+     background-color:rgb(246, 246, 245);
+     border:none;
+     border-radius: 0.5rem  ;
+     color:black;
+     padding: 0.2rem;
+
+}
+
+
+.left-h2 span{
+    font-size: 1.7rem;
+    font-weight: 600;
+     background-color:rgb(168, 241, 20);
+     border:none;
+     border-radius: 0.5rem  ;
+
 }
 
 .cards {
@@ -211,4 +238,75 @@ section{
 
 .arrow i{
     border-radius: 50%;
+    font-size:1.2rem;
+}
+
+
+#card2{
+    background-color: black;
+    color:white;
+
+}
+
+
+#card2 h2{
+    color:black;
+    background-color: rgb(211, 209, 209);
+}
+
+.sec-left{
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    width:40vw;
+    gap:2rem;
+}
+
+
+.section-2{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.sec-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding:2rem;
+    height:45vh;
+    background-color: rgb(185, 181, 181);
+    border-radius: 1rem;
+    gap:0rem;
+}
+
+
+.sec-left h1{
+    font-size: 2rem;
+}
+
+.sec-left p{
+font-size: 1.25rem;
+font-weight: 500;
+}
+
+.sec-left button{
+    padding:1rem 0.85rem;
+    color:white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: black;
+    border-radius: 0.75rem;
+}
+
+
+.sec-top img{
+  
+    width: 380px;
+    height:250px;
+    object-fit: cover;
+    border-radius: 0.5rem;  
+
 }

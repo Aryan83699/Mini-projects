@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="h-screen w-full flex gap-1 bg-gray-600">
       <Left addnote={setnote}/>
-      <Right note={notes}/>
+      <Right note={notes} addnote={setnote} />
     </div>
   )
 }

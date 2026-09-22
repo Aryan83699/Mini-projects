@@ -7,23 +7,26 @@ import Buttons from './components/Buttons';
 const App = () => {
 
     const [useData , setuserData]=useState([]);
+    const [page , setPage]=useState(1);
 
-    async function getData(){
-      let response = await axios.get("https://picsum.photos/v2/list?page=32&limit=15");
+    async function getData(page){
+      let response = await axios.get(`https://picsum.photos/v2/list?page=${page}&limit=15`);
       setuserData(response.data);
     }
 
    useEffect(()=>{
-    getData();
-   },[])
+    getData(page);
+   },[page])
 
-
+  
+  
+   
 
   return (
-    <div className='min-h-screen w-full bg-black p-5'>
+    <div className='min-h-screen w-full bg-[#16213E] p-5'>
       <Header />
       <Images data={useData}></Images>
-      <Buttons></Buttons>
+      <Buttons pageNum={page} changePage={setPage}></Buttons>
       
     </div>
   )

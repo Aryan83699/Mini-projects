@@ -9,4 +9,4 @@ class StudentsData(BaseModel):
 
 class CourseData(BaseModel):
     name:str
-    id:int
+    

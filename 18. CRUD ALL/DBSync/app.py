@@ -75,3 +75,29 @@ def add_student(course:CourseData,db:Session=Depends(get_session)):
 
     return {"message":"Successfully Created Resource"}
     
+
+@app.put('/updatestudent/{id}')
+def update_student(id:Annotated[int,Path()],student:StudentsData,db:Session=Depends(get_db)):
+    user=db.query(Students).filter(Students.id==id).first()
+    if not user:
+        raise HTTPException(status_code=404,detail="Student not found")
+
+    user.username=student.username
+    user.age=student.age
+    user.email=student.email
+    user.pswd=student.pswd
+
+    db.commit()
+
+    return {"message":"Successfully Updated"}
+
+@app.put('/updatecourse/{id}')
+def update_course(id:Annotated[int,Path()],course:CourseData,db:Session=Depends(get_session)):
+    data=db.query(Courses).filter(Courses.id==id).first()
+    if not data:
+        raise HTTPException(status_code=404,detail="Student not found")
+
+    data.name=course.name
+    db.commit()
+
+    return {"message":"Successfully Updated"}

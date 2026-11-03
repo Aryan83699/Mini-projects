@@ -14,14 +14,14 @@ class Students(Base):
     pswd:Mapped[str]=mapped_column(String(255),nullable=False)
     age:Mapped[int]=mapped_column(CheckConstraint("age>18"))
 
-    courses:Mapped[list["Courses"]]=relationship("Courses",back_populates="students")
+    courses:Mapped[list["Courses"]]=relationship("Courses",back_populates="students",passive_deletes=True)
 
 
 class Courses(Base):
     __tablename__="courses"
 
     id:Mapped[int]=mapped_column(primary_key=True,autoincrement=True)
-    student_id:Mapped[int]=mapped_column(ForeignKey("students.id"))
+    student_id:Mapped[int]=mapped_column(ForeignKey("students.id",ondelete="SET NULL"),nullable=True)
     name:Mapped[str]=mapped_column(String(50),nullable=False,unique=True)
 
     students:Mapped[Students]=relationship("Students",back_populates="courses")

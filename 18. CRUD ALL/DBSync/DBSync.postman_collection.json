@@ -1,0 +1,263 @@
+{
+  "info": {
+    "_postman_id": "3cdb5b75-8578-4ea5-a7ad-7c29528c9863",
+    "name": "DBSync",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59118441",
+    "_collection_link": "https://go.postman.co/collection/59118441-3cdb5b75-8578-4ea5-a7ad-7c29528c9863?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "DBSync",
+      "item": [
+        {
+          "name": "getStudents",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/students",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCourses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/courses",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getStudentId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/student/3",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "student",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCourseId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/course/8",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "course",
+                "8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddStudent",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\":\"IBM2004\",\r\n    \"email\":\"mohIBM@gmail.com\",\r\n    \"pswd\":\"falfjlkskahlif\",\r\n    \"age\":22\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/addstudent",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "addstudent"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddCourse",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Data Analysis\",\r\n    \"id\":3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/addcourse",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "addcourse"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateCourse",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"GO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/updatecourse/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "updatecourse",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStudent",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"age\":21,\r\n    \"username\":\"Aryan3007\",\r\n    \"email\":\"aryansingha887@gmail.com\",\r\n    \"pswd\":\"aryan3058\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/updatestudent/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "updatestudent",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DelCourse",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/deletecourse/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "deletecourse",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DelStudent",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": ""
+    }
+  ]
+}

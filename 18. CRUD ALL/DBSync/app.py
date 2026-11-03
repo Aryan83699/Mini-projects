@@ -101,3 +101,31 @@ def update_course(id:Annotated[int,Path()],course:CourseData,db:Session=Depends(
     db.commit()
 
     return {"message":"Successfully Updated"}
+
+
+
+@app.delete('/deletestudent/{id}')
+def del_student(id:Annotated[int,Path()],db:Session=Depends(get_db)):
+    user=db.query(Students).filter(Students.id==id).first()
+
+    if not user:
+        raise HTTPException(status_code=404,detail="Student not found")
+    
+    db.delete(user)
+    db.commit()
+
+    return {"message":"Record successfully deleted"}
+
+
+@app.delete('/deletecourse/{id}')
+def del_student(id:Annotated[int,Path()],db:Session=Depends(get_session)):
+    course=db.query(Courses).filter(Courses.id==id).first()
+
+    if not course:
+        raise HTTPException(status_code=404,detail="Course not found")
+    
+    db.delete(course)
+    db.commit()
+
+    return {"message":"Record sucessfully delted"}
+

@@ -4,6 +4,7 @@ from db.db import get_db,get_session,init_db
 from db.models import *
 from sqlalchemy.orm import Session
 from typing import Annotated
+from pd_models import *
 
 
 @asynccontextmanager
@@ -38,7 +39,7 @@ def show_courses(db:Session=Depends(get_session)):
     return courses
 
 @app.get('/course/{id}')
-def show_students_id(id:Annotated[int,Path()],db:Session=Depends(get_db)):
+def show_students_id(id:Annotated[int,Path()],db:Session=Depends(get_session)):
     course=db.query(Courses).filter(Courses.id==id).first()
 
     if course:
@@ -55,3 +56,22 @@ def show_students_id(id:Annotated[int,Path()],db:Session=Depends(get_db)):
 
     raise HTTPException(status_code=404,detail="Students doesn't exists'")
 
+
+@app.post('/addstudent')
+def add_student(student:StudentsData,db:Session=Depends(get_db)):
+    # username=str(StudentsData.username)
+    # print(username)
+    add_user=db.add(Students(username=student.username,pswd=student.pswd,email=student.email,age=student.age))
+    db.commit()
+   
+
+    return {"message":"Successfully Created Resource"}
+
+@app.post('/addcourse')
+def add_student(course:CourseData,db:Session=Depends(get_session)):
+    add_user=db.add(Courses(name=course.name,student_id=course.id))
+    db.commit()
+   
+
+    return {"message":"Successfully Created Resource"}
+    

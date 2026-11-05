@@ -16,5 +16,11 @@ SessionLocal=async_sessionmaker(bind=async_engine,expire_on_commit=False,autoflu
 
 async def init_db():
     with async_engine.begin() as conn:
-        pass
+        await conn.run_sync(Base.metadata.create_all())
+
+
+async def get_db():
+    with SessionLocal() as session:
+        yield session
+        
 

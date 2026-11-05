@@ -9,3 +9,14 @@ app=FastAPI()
 async def lifespan():
     await init_db()
     yield
+
+
+
+
+
+
+
+
+@app.get('/')
+def root():
+    return {"message":"Hello World in Main"}

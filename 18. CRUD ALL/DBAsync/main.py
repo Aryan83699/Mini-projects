@@ -1,8 +1,8 @@
-from fastapi import FastAPI,Depends,Path,HTTPException
+from fastapi import FastAPI,Depends,Path,HTTPException,Body,Request
 from contextlib import asynccontextmanager
 from db.models import *
 from db.db import db_init,get_db,AsyncSession,engine
-from schemas import Students_model,Courses_model
+from schemas import Students_model,Courses_model,Students_input,Courses_input
 from typing import Annotated,List
 from sqlalchemy import select
 import uuid
@@ -70,5 +70,21 @@ async def get_students_byID(id: Annotated[uuid.UUID, Path()],
     return student
 
 
+
+@app.post('/add_student')
+async def add_student(request:Request,student:Annotated[Students_input,Body()],db:Annotated[AsyncSession,Depends(get_db)]):
+    data=Students(username=student.username,age=student.age,email=student.email,pswd=student.pswd)
+    student=db.add(data)
+    await db.commit()
+    return {"message":"successfully student created"}
+
+
+@app.post('/add_course')
+async def add_course(request:Request,course:Annotated[Courses_input,Body()],db:Annotated[AsyncSession,Depends(get_db)]):
+    data=Courses(student_id=course.student_id,name=course.name)
+    courses=db.add(data)
+    await db.commit()
+    return {"message":"successfully course created"}
+    
 
 

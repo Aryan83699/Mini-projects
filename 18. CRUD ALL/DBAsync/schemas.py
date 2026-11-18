@@ -16,3 +16,13 @@ class Courses_model(BaseModel):
     id:uuid.UUID
     student_id:uuid.UUID
     name:str
+
+class Courses_input(BaseModel):
+    student_id:uuid.UUID
+    name:str
+
+class Students_input(BaseModel):
+    username:str
+    email:str
+    age:int
+    pswd:str

@@ -4,7 +4,7 @@ from db.models import *
 from db.db import db_init,get_db,AsyncSession,engine
 from schemas import *
 from typing import Annotated,List
-from sqlalchemy import select,update
+from sqlalchemy import select,delete
 import uuid
 
 
@@ -17,7 +17,7 @@ async def lifespan(app:FastAPI):
     yield
     await engine.dispose()
 
-app=FastAPI(lifespan=lifespan)
+app=FastAPI(lifespan=lifespan,title="CRUD using Async DataBase (postgres)",version="1.0.0")
 
 
 
@@ -125,3 +125,32 @@ async def update_course(request:Request,course:Annotated[Course_update,Body()],d
 
 
     return {"message":"Successfully updated Course details"}
+
+
+
+
+@app.delete("/delete_student/{id}")
+async def remove_stud(request:Request,id:Annotated[uuid.UUID,Path()],db:Annotated[AsyncSession,Depends(get_db)]):
+    student_exist=await db.execute(select(Students).where(Students.id==id))
+
+    if not student_exist:
+        raise HTTPException(detail="Student doesn't exist",status_code=404)
+
+    await db.execute(delete(Students).where(Students.id==id))
+    await db.commit()
+
+    return {"message":"Successfully remove Student"}
+
+
+
+@app.delete("/delete_course/{id}")
+async def remove_course(request:Request,id:Annotated[uuid.UUID,Path()],db:Annotated[AsyncSession,Depends(get_db)]):
+    course_exist=await db.execute(select(Courses).where(Courses.id==id))
+
+    if not course_exist:
+        raise HTTPException(detail="Course doesn't exist",status_code=404)
+
+    await db.execute(delete(Courses).where(Courses.id==id))
+    await db.commit()
+
+    return {"message":"Successfully remove Course   "}

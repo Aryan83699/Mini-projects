@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "265f8e86-f73c-463d-8aa7-23983ae05ce5",
+    "name": "AsyncDB",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59118441",
+    "_collection_link": "https://go.postman.co/collection/59118441-265f8e86-f73c-463d-8aa7-23983ae05ce5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AsyncDB",
+      "item": [
+        {
+          "name": "base",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}",
+              "host": [
+                "{{base}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllStudents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/students_all",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "students_all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllCourses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/courses_all",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "courses_all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "courseByID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/courses/82aa9d2f-b5cf-43f6-86c8-c66945ab79ff",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "courses",
+                "82aa9d2f-b5cf-43f6-86c8-c66945ab79ff"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "studentByID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/students/26d97bf5-0967-4b6d-b892-a64f355a2d9c",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "students",
+                "26d97bf5-0967-4b6d-b892-a64f355a2d9c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addStudent",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\":\"dsfjalsk\",\r\n    \"email\":\"kldsafjklsdj@gmail.com\",\r\n    \"age\":20,\r\n    \"pswd\":\"ldkfajslk\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/add_student",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "add_student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addCourse",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"student_id\":\"26d97bf5-0967-4b6d-b892-a64f355a2d9c\",\r\n    \"name\":\"software testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/add_course",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "add_course"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStudent",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":\"26d97bf5-0967-4b6d-b892-a64f355a2d9c\",\r\n    \"username\":\"vivek\",\r\n    \"email\":\"vivek@gmail.com\",\r\n    \"pswd\":\"dlkfjsa\",\r\n    \"age\":34\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/update_student",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "update_student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateCourse",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\r\n        \"id\": \"712beedd-fc99-406b-9bdc-a5f57b8cae27\",\r\n        \"student_id\": \"26d97bf5-0967-4b6d-b892-a64f355a2d9c\",\r\n        \"name\": \"AI Software Testing\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/update_course",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "update_course"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DelStudent",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base}}/delete_student/26d97bf5-0967-4b6d-b892-a64f355a2d9c",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "delete_student",
+                "26d97bf5-0967-4b6d-b892-a64f355a2d9c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DelCourse",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/delete_course/377a9390-d84d-4636-bfd4-0e2452748d9b",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "delete_course",
+                "377a9390-d84d-4636-bfd4-0e2452748d9b"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": ""
+    }
+  ]
+}

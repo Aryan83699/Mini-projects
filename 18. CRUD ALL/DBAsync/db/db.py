@@ -1,26 +1,31 @@
-from sqlalchemy.ext.asyncio import create_async_engine,async_sessionmaker,AsyncSession
-from sqlalchemy import select,ForeignKey,CheckConstraint
-from sqlalchemy.orm import relationship,mapped_column,Mapped,DeclarativeBase
+from sqlalchemy.ext.asyncio import async_sessionmaker,AsyncSession,create_async_engine
+from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-url=os.getenv("PGASYNC")
+engine=create_async_engine(os.getenv("PGASYNC"),echo=True,pool_size=5,max_overflow=7)
+
+AsyncSessionLocal=async_sessionmaker(bind=engine,autoflush=False,expire_on_commit=False)
+
 
 class Base(DeclarativeBase):
     pass
 
-async_engine=create_async_engine(url=url,pool_size=5,max_overflow=8,echo=True)
-SessionLocal=async_sessionmaker(bind=async_engine,expire_on_commit=False,autoflush=False)
 
-async def init_db():
-    with async_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all())
+async def db_init():
+    async with engine.begin() as conn:
+        print("Connection Initiated")
+        await conn.run_sync(Base.metadata.create_all)
+        print("Classes created successfully at db")
 
 
 async def get_db():
-    with SessionLocal() as session:
-        yield session
-        
+    db=AsyncSessionLocal() 
+    try:
+        yield db
 
+    finally:
+        db.commit()

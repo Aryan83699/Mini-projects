@@ -25,4 +25,18 @@ class Students_input(BaseModel):
     username:str
     email:str
     age:int
+    pswd:str\
+
+
+class Students_update(BaseModel):
+    id:uuid.UUID
+    username:str
+    email:str
     pswd:str
+    age:int
+
+
+class Course_update(BaseModel):
+    id:uuid.UUID
+    student_id:uuid.UUID
+    name:str

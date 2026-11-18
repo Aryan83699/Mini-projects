@@ -2,9 +2,9 @@ from fastapi import FastAPI,Depends,Path,HTTPException,Body,Request
 from contextlib import asynccontextmanager
 from db.models import *
 from db.db import db_init,get_db,AsyncSession,engine
-from schemas import Students_model,Courses_model,Students_input,Courses_input
+from schemas import *
 from typing import Annotated,List
-from sqlalchemy import select
+from sqlalchemy import select,update
 import uuid
 
 
@@ -87,4 +87,41 @@ async def add_course(request:Request,course:Annotated[Courses_input,Body()],db:A
     return {"message":"successfully course created"}
     
 
+@app.put("/update_student")
+async def update_student(request:Request,student:Annotated[Students_update,Body()],db:Annotated[AsyncSession,Depends(get_db)]):
+    student_exist=await db.execute(select(Students).where(Students.id==student.id))
 
+    if not student_exist:
+        raise HTTPException(status_code=404,detail="Student not found")
+
+    student_exist=student_exist.scalar_one_or_none()
+
+    # student_exist.id=student.id
+    student_exist.username=student.username
+    student_exist.email=student.email
+    student_exist.age=student.age
+    student_exist.pswd=student.pswd
+
+    await db.commit()
+
+
+    return {"message":"Successfully updated students details"}
+
+
+
+@app.put("/update_course")
+async def update_course(request:Request,course:Annotated[Course_update,Body()],db:Annotated[AsyncSession,Depends(get_db)]):
+    course_exist=await db.execute(select(Courses).where(Courses.id==course.id))
+
+    if not course_exist:
+        raise HTTPException(status_code=404,detail="Student not found")
+
+    course_exist=course_exist.scalar_one_or_none()
+
+    course_exist.name=course.name
+    course_exist.student_id=course.student_id
+
+    await db.commit()
+
+
+    return {"message":"Successfully updated Course details"}

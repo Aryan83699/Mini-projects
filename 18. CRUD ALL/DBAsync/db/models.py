@@ -22,7 +22,7 @@ class Courses(Base):
     __tablename__="courses"
 
     id:Mapped[uuid.UUID]=mapped_column(UUID(as_uuid=True),primary_key=True,default=uuid.uuid4)
-    student_id:Mapped[uuid.UUID]=mapped_column(ForeignKey("students.id"),onupdate="SET NULL",nullable=True)
+    student_id:Mapped[uuid.UUID]=mapped_column(ForeignKey("students.id"),nullable=True)
     name:Mapped[str]=mapped_column(String,nullable=False,unique=True)
 
     students:Mapped[Students]=relationship("Students",back_populates="courses")

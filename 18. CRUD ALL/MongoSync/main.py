@@ -1,4 +1,4 @@
-from fastapi import FastAPI,HTTPException,Depends,Path
+from fastapi import FastAPI,HTTPException,Depends,Path,Body
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 from db.db import get_db,client
@@ -20,22 +20,16 @@ async def lifespan(app:FastAPI):
         client.close()
 
 
-
-
-
-
 app=FastAPI(title="CRUD Using Mongo Synchoronous Client ",version="1.0.0",lifespan=lifespan)
 
 
-
-
-
+# Default Path
 @app.get('/')
 def home():
     return {"message":"MongoDB Synchronous CRUD "}
 
 
-
+# GET Requests
 
 @app.get('/allStudents',response_model=List[AllStudentsRes])
 def get_students(db=Depends(get_db)):
@@ -44,7 +38,7 @@ def get_students(db=Depends(get_db)):
         content=json.loads(json_util.dumps(results))
     )
 
-@app.get('/getStudID/{id}')
+@app.get('/getStudID/{id}',response_model=AllStudentsRes)
 def get_stud_by_id(id:Annotated[str,Path()],db=Depends(get_db)):
     results=db.find_one({"_id":ObjectId(id)})
 
@@ -55,3 +49,12 @@ def get_stud_by_id(id:Annotated[str,Path()],db=Depends(get_db)):
     return JSONResponse(
         content=json.loads(json_util.dumps(results))
     )
+
+
+# POST Request Handling
+
+
+@app.post('/CreateStudents')
+def add_student(data:Annotated[Dict,Body()],db=Depends(get_db)):
+    result=db.insert_one(data)
+    return {"message":"success","id":str(result.inserted_id)}

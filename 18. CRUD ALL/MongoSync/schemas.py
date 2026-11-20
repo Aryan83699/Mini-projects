@@ -8,8 +8,12 @@ class AllStudentsRes(BaseModel):
     name:str
     email:str
     location:str
-    courses:List
+    courses:List[str]
 
 
-# class StudentID(BaseModel):
-#     id:str
+class AddStudent(BaseModel):
+    name:str
+    email:str
+    location:str
+    courses:List[str]
+    

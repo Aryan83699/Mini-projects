@@ -57,4 +57,27 @@ def get_stud_by_id(id:Annotated[str,Path()],db=Depends(get_db)):
 @app.post('/CreateStudents')
 def add_student(data:Annotated[Dict,Body()],db=Depends(get_db)):
     result=db.insert_one(data)
+    if not result:
+        return HTTPException(status_code=404,detail={"message":"Student not found"})
     return {"message":"success","id":str(result.inserted_id)}
+
+
+
+#PUT Request Handling
+
+
+@app.put("/UpdateStudent/{id}")
+def update_student(id:Annotated[str,Path()],data:Annotated[Dict,Body()],db=Depends(get_db)):
+    filter={"_id":ObjectId(id)}
+    result=db.update_many(filter,{"$set":data})
+    if not result:
+        return HTTPException(status_code=404,detail={"message":"Student not found"})
+
+    # print(result)
+    # return {"message":"success"}
+
+    updated=db.find_one({"_id":ObjectId(id)})
+    return JSONResponse(
+        content=json.loads(json_util.dumps(updated))
+    )
+

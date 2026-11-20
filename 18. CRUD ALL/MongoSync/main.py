@@ -66,7 +66,7 @@ def add_student(data:Annotated[Dict,Body()],db=Depends(get_db)):
 #PUT Request Handling
 
 
-@app.put("/UpdateStudent/{id}")
+@app.put("/UpdateStudent/{id}",response_model=AllStudentsRes)
 def update_student(id:Annotated[str,Path()],data:Annotated[Dict,Body()],db=Depends(get_db)):
     filter={"_id":ObjectId(id)}
     result=db.update_many(filter,{"$set":data})
@@ -81,3 +81,13 @@ def update_student(id:Annotated[str,Path()],data:Annotated[Dict,Body()],db=Depen
         content=json.loads(json_util.dumps(updated))
     )
 
+
+
+#DELETE Request Handling
+
+@app.delete("/deleteStudent/{id}")
+def del_student(id:Annotated[str,Path()],db=Depends(get_db)):
+    filter={"_id":ObjectId(id)}
+    db.delete_one(filter)
+
+    return {"message":"resource got deleted"}

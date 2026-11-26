@@ -36,12 +36,12 @@ async def todo_by_id(request:Request,id:Annotated[str,Path()],db:Annotated[Async
 # POST Request Handling 
 
 
-@todosRouter.post('/addtodos',response_model=Dict)
+@todosRouter.post('/addtodos',response_model=Dict,status_code=201)
 @limiter.limit('5/minute')
 async def add_todo(request:Request,data:Annotated[addTodo,Body()],db:Annotated[AsyncSession,Depends(get_db)]):
 
     id=await create_todo(db=db,data=data)
-    return {"message":f"successfully added todo . id :- {id}"}
+    return {"id":f"{id}"}
 
 
 # PUT Request Handling

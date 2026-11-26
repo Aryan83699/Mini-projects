@@ -1,3 +1,4 @@
+import logger_config as log
 from fastapi import FastAPI,Depends
 from db.database import *
 from contextlib import asynccontextmanager
@@ -37,6 +38,7 @@ app.add_middleware(SlowAPIMiddleware)
 #home route
 @app.get('/')
 async def home():
+
     return {"status":"TODO App is running......."}
 
 
